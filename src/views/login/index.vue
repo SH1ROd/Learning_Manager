@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">Login Form</h3>
+        <h3 class="title" style="color: #16191cb3;font-size:40px;font-family: 华文琥珀;font-weight: 100;">技术栈学习进度管理系统</h3>
       </div>
 
       <el-form-item prop="username">
@@ -13,7 +13,7 @@
         <el-input
           ref="username"
           v-model="loginForm.username"
-          placeholder="Username"
+          placeholder="用户名"
           name="username"
           type="text"
           tabindex="1"
@@ -30,7 +30,7 @@
           ref="password"
           v-model="loginForm.password"
           :type="passwordType"
-          placeholder="Password"
+          placeholder="密码"
           name="password"
           tabindex="2"
           auto-complete="on"
@@ -41,11 +41,11 @@
         </span>
       </el-form-item>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
+      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;background-color: #aac1d4b4;" @click.native.prevent="handleLogin">登录</el-button>
 
       <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: any</span>
+        <span style="margin-right:20px;">Made by Dexter.L</span>
+        <!-- <span> Made by Dexter.L</span> -->
       </div>
 
     </el-form>
@@ -59,15 +59,16 @@ export default {
   name: 'Login',
   data() {
     const validateUsername = (rule, value, callback) => {
-      if (!validUsername(value)) {
-        callback(new Error('Please enter the correct user name'))
+      // if (!validUsername(value)) {
+      if (value.length < 1) {
+        callback(new Error('请输入正确的用户名'))
       } else {
         callback()
       }
     }
     const validatePassword = (rule, value, callback) => {
-      if (value.length < 6) {
-        callback(new Error('The password can not be less than 6 digits'))
+      if (value.length < 1) {
+        callback(new Error('请输入密码'))
       } else {
         callback()
       }
@@ -75,7 +76,7 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: '111111'
+        password: 'admin'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -164,16 +165,16 @@ $cursor: #fff;
   }
 
   .el-form-item {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.1);
+    border: 2px solid #222222;
+    background: #676767be;
     border-radius: 5px;
-    color: #454545;
+    color: #000000;
   }
 }
 </style>
 
 <style lang="scss" scoped>
-$bg:#2d3a4b;
+$bg:#323232;
 $dark_gray:#889aa4;
 $light_gray:#eee;
 
@@ -182,7 +183,12 @@ $light_gray:#eee;
   width: 100%;
   background-color: $bg;
   overflow: hidden;
+  background-image: url('../../assets/login_background_0.jpg');
+  background-size: 100%;
+  background-position: 50% 70%;
 
+  display: flex;
+  align-content: top;
   .login-form {
     position: relative;
     width: 520px;

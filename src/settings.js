@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'Learning Manager',
+  title: '技术栈学习进度管理系统',
 
   /**
    * @type {boolean} true | false
